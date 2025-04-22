@@ -1,0 +1,198 @@
+:root {
+    /* Aquí puedes cambiar los colores según tu paleta */
+    --color-fondo: #55A489;
+    --color-texto: #404E50;
+    --color-video-borde: #7D97AD;
+    --color-letras: #F0EBEE;
+    --color-fondo-texto: rgba(0, 0, 0, 0.1); /* Fondo opaco para las palabras */
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+
+    /* Fondo con la palabra "Tu mi reina pepiada" repetida sin espacio y en cursiva */
+    background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="300" height="40"%3E%3Ctext x="0" y="30" font-family="Arial" font-size="20" font-style="italic" fill="rgba(240,235,238,0.3)"%3ETu%20mi%20reina%20pepiada%3C/text%3E%3C/svg%3E');
+    background-repeat: repeat;
+    background-size: 200px 40px; /* Ajustamos para que las palabras estén completamente pegadas */
+    background-position: top left;
+    background-attachment: fixed;
+}
+
+
+
+.container {
+    text-align: center;
+}
+
+.title {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Pacifico', cursive;
+    font-size: 1.5em;
+    font-weight: 600;
+    color: var(--color-texto);
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    margin-bottom: 20px;
+    z-index: 10;
+}
+
+
+.image-container {
+    margin-bottom: 20px;
+}
+
+.song-image {
+    width: 100%;
+    max-width: 400px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.song-image:hover {
+    transform: scale(1.05);
+}
+
+.lyrics-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.animated-lyrics {
+    font-family: 'Pacifico', cursive;
+    position: absolute;
+    font-size: calc(2vw + 1em);
+    font-weight: bold;
+    color: var(--color-letras);
+    opacity: 0;
+    transition: opacity 1s ease, transform 1.5s ease-out;
+    text-align: center;
+    white-space: nowrap;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    60% { transform: scale(1); }
+}
+
+.animated-lyrics {
+    animation: pulse 2s ease-in-out;
+}
+
+.fade-in {
+    opacity: 1;
+}
+
+.fade-out {
+    opacity: 0;
+}
+
+.grow {
+    transform: scale(3);
+}
+
+video {
+    width: 100%;
+    max-width: 560px;
+    border-radius: 10px;
+}
+
+.heart::before,
+.heart::after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: pink;
+    border-radius: 50%;
+}
+
+.heart::before {
+    top: -10px;
+    left: 0;
+}
+
+.heart::after {
+    left: -10px;
+    top: 0;
+}
+
+
+.heart {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    opacity: 0.8;
+    transform: rotate(45deg);
+    animation: floatUp 8s linear infinite;
+    pointer-events: none;
+    z-index: 1;
+    box-shadow: 0 0 10px rgba(255, 192, 203, 0.4);
+}
+
+.heart::before,
+.heart::after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: inherit;
+    border-radius: 50%;
+}
+
+.heart::before {
+    top: -10px;
+    left: 0;
+}
+
+.heart::after {
+    left: -10px;
+    top: 0;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) scale(1) rotate(45deg);
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(-100vh) scale(1.2) rotate(45deg);
+        opacity: 0;
+    }
+}
+
+
+
+/* Botón de dedicatoria */
+.dedication-btn {
+    background: #7D97AD;
+    color: #704264;
+    border: none;
+    border-radius: 25px;
+    padding: 10px 20px;
+    font-family: 'Pacifico', cursive;
+    font-size: 1em;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.dedication-btn:hover {
+    transform: translateX(-50%) scale(1.1);
+}
