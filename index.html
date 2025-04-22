@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imagen Redirigida a YouTube</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<script>
+    // Función para generar corazones flotantes en posiciones aleatorias
+    function createHeart() {
+        const heart = document.createElement('div');
+        heart.classList.add('heart');
+
+        // Posición horizontal aleatoria
+        heart.style.left = `${Math.random() * 100}vw`;
+
+        // Iniciar desde la parte inferior de la pantalla
+        heart.style.bottom = '0px';
+
+        document.body.appendChild(heart);
+
+        // Eliminar el corazón después de la animación
+        setTimeout(() => {
+            heart.remove();
+        }, 8000);
+    }
+
+    // Generar un corazón cada cierto intervalo
+    setInterval(createHeart, 1000); // Cada segundo
+</script>
+
+<body>
+    <div class="container">
+        <!-- Título principal -->
+        <div class="title">
+            Reina Pepiada dura 4:04 pero yo te la dedico toda la vida
+        </div>
+        <button class="dedication-btn">Para vos 💌</button>
+        <div class="image-container">
+            <!-- Imagen de la canción que redirige a YouTube -->
+            <a href="https://www.youtube.com/watch?v=Fnz7jZuAtSM" target="_blank">
+                <img src="https://images.genius.com/e13ab3af85f2c83e9a6e1858ed5eaddf.1000x1000x1.jpg" alt="Imagen de la canción" class="song-image">
+            </a>
+        </div>
+
+        <div class="lyrics-container">
+            <!-- Las palabras aparecerán aquí -->
+        </div>
+    </div>
+
+
+    <script>
+        const words = [
+        "si estuviese ahí no te faltará nada",
+        "Contigo me siento rico",
+        "Tú y yo lo mismo",
+        "Con tus ojos quiero toda mi manada ",
+        "'Toy ahorrando pa' comprarte el sol",
+        "Reina Pepiada",
+        "Tu cuerpo es poesía",
+        "Toda la vida"
+        ];
+
+        let remainingWords = [...words]; // Copia de las palabras originales
+
+        // Función para generar una palabra aleatoria y posicionarla en un lugar aleatorio
+        function generateWord() {
+            if (remainingWords.length === 0) {
+                remainingWords = [...words]; // Restablecer las palabras disponibles
+            }
+
+            const randomIndex = Math.floor(Math.random() * remainingWords.length);
+            const lyricElement = document.createElement('p');
+            lyricElement.classList.add('animated-lyrics');
+            lyricElement.innerText = remainingWords[randomIndex];
+
+            // Eliminar la palabra seleccionada de la lista de palabras disponibles
+            remainingWords.splice(randomIndex, 1);
+
+            // Obtener el tamaño de la pantalla
+            const screenWidth = window.innerWidth;
+            const screenHeight = window.innerHeight;
+
+            // Posicionar la palabra en una ubicación aleatoria de la pantalla
+            const randomX = Math.random() * (screenWidth - 200); // Rango horizontal
+            const randomY = Math.random() * (screenHeight - 100); // Rango vertical
+
+            lyricElement.style.left = `${randomX}px`;
+            lyricElement.style.top = `${randomY}px`;
+
+            document.body.appendChild(lyricElement);
+
+            // Animar las palabras
+            setTimeout(() => {
+                lyricElement.classList.add('fade-in');
+                lyricElement.classList.add('grow');
+            }, 100);
+
+            // Desaparecer las palabras después de 2.5 segundos
+            setTimeout(() => {
+                lyricElement.classList.add('fade-out');
+            }, 2500);
+
+            // Eliminar las palabras después de la animación
+            setTimeout(() => {
+                lyricElement.remove();
+            }, 3000);
+        }
+
+        // Generar palabra cada 2.5 segundos
+        setInterval(generateWord, 2500);
+    </script>
+</body>
+</html>
