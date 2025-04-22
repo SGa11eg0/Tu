@@ -40,7 +40,7 @@ body {
     left: 50%;
     transform: translateX(-50%);
     font-family: 'Pacifico', cursive;
-    font-size: 1.5em;
+    font-size: 1em;
     font-weight: 600;
     color: var(--color-texto);
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
